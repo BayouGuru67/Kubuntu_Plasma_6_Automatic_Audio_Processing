@@ -40,12 +40,28 @@ The files in this repo (with their locations and descriptions) are as follows:
   
 ~/.config/wireplumber/main.lua.d/99-force-routing.lua -  
   This file is for crash/reboot automation and management and restores things after a crash or reboot.
-  
+
+Installation:  
+The installation of these files to accomplish automatic audio processing requires that you have pw-jack, Carla and Kubuntu 26.04+ installed.  Older Plasma 5 systems will have to do a number of things differently, so user beware if you try this on a Plasma 5 system!  Installation should be as simple as making sure all node names and file paths within the 6 files in this repo are correct for your system, then copy the files to your corresponding folders, setting their permissions where required (chmod +x 644 I think) then restart systemd and pipewire with the commands:
+
+"systemctl --user restart pipewire"  
+
+and
+
+"systemctl --user daemon-reload"
+
 Taken together, these 6 files make it possible to dispense with having to run qpwgraph or any other application to manage the audio connections on my HTPC system.  
 As it is currently configured, if I install any new game or media player, or any audio-producing software, the audio routes properly straight away without my needing to do anything.  
 Formerly, when managing my audio connection with qpwgraph, the first time I ran any application that produced audio, I would have to [Alt} [Tab] out of it once it was up and running, task-switch over to qpwgraph, patch the audio into Carla's inputs, DON'T FORGET TO CLICK SAVE, then switch back and hope it didn't cause an error or issue of some sort, which it sometimes did.  While it works, it is far from the ideal way to manage the situation.  
 The end result of the creation of the 6 files listed here is that now, all audio produced by this system goes through Carla and is processed as near to real-time as you can get by whatever plugins I decide to use inside Carla, and it is done without my needing to do anything at all.  
 Currently I am only using 2 plugins:  The LSP 8-band Parametric EQ and LUveler.  The EQ is for doing EQ things and LUveler is like having a really good audio technician riding the volume faders inside your computer, keeping everything at a fairly constant level so volume adjustments from source to source and video to video are a thing of the past.  This is all a work in progress still, as there is still the occasional hiccup or odd hitch I am troubleshooting the cause of, but otherwise, this is a very stable and reasonably doable way to completely automate a slightly more complex audio signal routing and processing path/routine within your Linux HTPC.
+
+Troubleshooting and other useful commands:  
+There are a few commands which are very useful in setting up or troubleshooting these files and I want to list them here for you, as they will prove very useful in getting this automation working on your system.  
+"sudo dmesg -T | grep -E -i "snd|sound|audio|hda|xrun" | tail -n 20" - Shows up to 20 lines of the systemd messages regarding the audio hardware.  
+"journalctl --user -b 0 -u pipewire -u wireplumber --no-pager | tail -n 50" - Shows up to 50 lines of pipewire and wireplumber log entries.  
+"pw-top -b -n 3" - Shows the usage and error counts for the apps in the audio chain.  
+"pw-link -i -o" - Shows the routing/links wihin pipewire.  
   
 One interesting parallel between the digital and analog worlds of audio processing is that in the digital realm, adding additional effects adds latency/lag/delay whereas in the analog audio realm, adding effects adds noise, not necessarily any latency, lag or delay unless of course you're adding a delay effect.  I'll take a few milliseconds of lag over a few decibels of noise any day!
   
