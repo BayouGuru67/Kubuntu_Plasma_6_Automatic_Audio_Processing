@@ -4,22 +4,22 @@ This repo provides files and information on automating the processing of audio i
 The files in this repo are for reference use only!  It is entirely likely that multiple items within these files will have to be changed in order for them to function properly on your particular setup,  For reference, I am including a basic hardware description of my system here so that you can use it to cross-reference the relevant items for your application.
 
 My hardware:
-  Mainboard:  Gigabyte X870 Gaming WiFi6
-  CPU:        AMD Ryzen 5 7600X
-  RAM:        16 Gb single-channel CAS36 DDR6000
-  GPU1:       AMD RX580 (Using the HDMI output to an A/V receiver then to a 4k flat screen TV.)
-  GPU2:       Integrated AMD RX7600X  (It is used for it's advanced features and fed into the RX580)
-
-Software:
-  Kubuntu 26.04 LTS
-  Plasma 6.6
-  Pipewire
-  Carla
-  LSP Plugins
-  LUveler Plugin
-  systemd
-  wireplumber
-  pw-jack
+  Mainboard:  Gigabyte X870 Gaming WiFi6  
+  CPU:        AMD Ryzen 5 7600X  
+  RAM:        16 Gb single-channel CAS36 DDR6000  
+  GPU1:       AMD RX580 (Using the HDMI output to an A/V receiver then to a 4k flat screen TV.)  
+  GPU2:       Integrated AMD RX7600X  (It is used for it's advanced features and fed into the RX580)  
+  
+Software:  
+  Kubuntu 26.04 LTS  
+  Plasma 6.6  
+  Pipewire  
+  Carla  
+  LSP Plugins  
+  LUveler Plugin  
+  systemd  
+  wireplumber  
+  pw-jack  
   
 The files in this repo (with their locations and descriptions) are as follows:
 
