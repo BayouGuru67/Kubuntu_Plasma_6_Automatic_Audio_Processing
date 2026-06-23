@@ -23,22 +23,22 @@ Software:
   
 The files in this repo (with their locations and descriptions) are as follows:
 
-~/.config/pipewire/pipewire.conf.d/01-virtual-sink.conf - 
+~/.config/pipewire/pipewire.conf.d/01-virtual-sink.conf -  
   This file instructs pipewire to create a virtusl sink for all audio-producing applications to connect to.
 
-~/.config/pipewire/pipewire.conf.d/99-buffer-fix.conf - 
+~/.config/pipewire/pipewire.conf.d/99-buffer-fix.conf -  
   This file locks the pipewire rate to 48K and the quantum (buffer) to 1024 (the min, max and default quantum are all the same, and allows for non-power of 2 quantum values as well.
 
-~/.config/systemd/user/carla-rack.service - 
+~/.config/systemd/user/carla-rack.service -  
   This file creates the system-level service that manages the automation of the audio subsytem and its various connections. 
 
-~/.config/systemd/user/pipewire.service.d/override.conf - 
+~/.config/systemd/user/pipewire.service.d/override.conf -  
   This file overrides the default application permissions configuration to give Carla full real-time permissions.
 
-~/.config/wireplumber/wireplumber.conf.d/80-route-carla.conf - 
+~/.config/wireplumber/wireplumber.conf.d/80-route-carla.conf -  
   This file sets up the audio routing/connections within the system.
 
-~/.config/wireplumber/main.lua.d/99-force-routing.lua - 
+~/.config/wireplumber/main.lua.d/99-force-routing.lua -  
   This file is for crash/reboot automation and management and restores things after a crash or reboot.
 
 Taken together, these 6 files make it possible to dispense with having to run qpwgraph or any other application to manage the audio connections on my HTPC system.  Now, if I get a new game or media player installed, the audio routes properly straight-away without my needing to do anything.  The end result is that all audio produced by this system goes through Carla and is processed in a near to real time as you can get by whatever plugins I decide to use in Carla.  Currently I am only using 2 plugins:  The LSP 8-band Parametric EQ and LUveler.  The EQ is for doing EQ things and LUveler is like having a really good audio technician riding the volume faders inside your computer, keeping everything at a fairly constant level so volume adjustments from source to source and video to video are a thing of the past.  This is all a work in progress still, as there is still the occasional hiccup or odd hitch I am troubleshooting the cause of, but otherwise, this is a very stable and reasonably doable way to completely automate a slightly more complex audio signal routing and processing path/routine within your Linux HTPC.
